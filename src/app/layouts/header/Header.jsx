@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import {
   Bars3Icon,
   XMarkIcon,
-  CodeBracketIcon,
+  VideoCameraIcon
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
@@ -27,12 +27,12 @@ function Header() {
   };
 
   return (
-    <div className="w-full bg-white sticky top-0 shadow-lg">
+    <div className="w-full bg-yellow-400 sticky top-0 shadow-lg">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
             <Link to="/">
-              <CodeBracketIcon className="h-6 w-6 cursor-pointer" />
+              <VideoCameraIcon className="h-6 w-6 cursor-pointer" />
             </Link>
           </span>
           <span className="font-bold">React Fire PhotoFolio</span>
@@ -57,7 +57,7 @@ function Header() {
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
                     <span>
-                      <CodeBracketIcon className="h-6 w-6 cursor-pointer" />
+                      <VideoCameraIcon className="h-6 w-6 cursor-pointer" />
                     </span>
                     <span className="font-bold">React Fire PhotoFolio</span>
                   </div>

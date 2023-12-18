@@ -11,17 +11,21 @@ function AlbumContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   const addAlbum = async (albumName) => {
+    setLoading(true);
     try {
       const album = await albumService.addAlbum(albumName);
-      setAlbums([album, ...setAlbums]);
+      setAlbums([album, ...albums]);
       alertService.success("Album added successfully!");
     } catch (error) {
       console.log("Error in addAlbum function..", error);
       alertService.error(error.code);
+    } finally {
+      setLoading(false);
     }
   };
 
   const updateAlbum = async (id, albumName) => {
+    setLoading(true);
     try {
       await albumService.updateAlbum(id, albumName);
       setAlbums((albums) =>
@@ -33,10 +37,13 @@ function AlbumContextProvider({ children }) {
     } catch (error) {
       console.log("Error in updateAlbum function..", error);
       alertService.error(error.code);
+    } finally {
+      setLoading(false);
     }
   };
 
   const deleteAlbum = async (id) => {
+    setLoading(true);
     try {
       await albumService.deleteAlbum(id);
       setAlbums((albums) => albums.filter((album) => album.id !== id));
@@ -45,6 +52,7 @@ function AlbumContextProvider({ children }) {
       console.log("Error in deleteAlbum function..", error);
       alertService.error(error.code);
     }
+    setLoading(false);
   };
 
   useEffect(() => {

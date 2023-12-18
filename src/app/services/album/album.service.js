@@ -1,4 +1,4 @@
-import { collection, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 import { db } from "../../config";
 
@@ -23,11 +23,11 @@ class AlbumService {
   };
 
   updateAlbum = async (id, albumName) => {
-    return await updateDoc(collection(db, "albums", id), { albumName });
+    return await updateDoc(doc(db, "albums", id), { albumName });
   };
 
   deleteAlbum = async (id) => {
-    return await deleteDoc(collection(db, "albums", id));
+    return await deleteDoc(doc(db, "albums", id));
   };
 }
 

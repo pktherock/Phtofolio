@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { CodeBracketIcon } from "@heroicons/react/24/solid";
+import { CameraIcon } from "@heroicons/react/24/solid";
 
 function Footer() {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-yellow-400 mt-5">
       <div className="container relative z-10 mx-auto px-4">
         <div className="-m-1 flex flex-wrap items-center justify-between">
           <div className="w-auto p-4">
             <Link to="/">
               <div className="inline-flex items-center">
-                <CodeBracketIcon className="h-6 w-6 cursor-pointer" />
+                <CameraIcon className="h-6 w-6 cursor-pointer" />
                 <span className="ml-4 text-lg font-bold">
                   React Fire PhotFolio
                 </span>
