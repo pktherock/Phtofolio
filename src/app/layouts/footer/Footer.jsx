@@ -10,7 +10,9 @@ function Footer() {
             <Link to="/">
               <div className="inline-flex items-center">
                 <CodeBracketIcon className="h-6 w-6 cursor-pointer" />
-                <span className="ml-4 text-lg font-bold">React Fire Auth</span>
+                <span className="ml-4 text-lg font-bold">
+                  React Fire PhotFolio
+                </span>
               </div>
             </Link>
           </div>
@@ -114,7 +116,7 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl justify-center">
         <footer className="px-4 py-3">
           <p className="text-base font-semibold text-gray-700">
-            © 2023 React Fire Auth. All Rights Reserved.
+            © 2023 React Fire PhotoFolio. All Rights Reserved.
           </p>
         </footer>
       </div>
