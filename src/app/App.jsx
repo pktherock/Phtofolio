@@ -1,11 +1,9 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import appRoutes from "./app.routes";
 
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl">PhotoFolio</h1>
-    </>
-  );
+  return <RouterProvider router={appRoutes} />;
 }
 
 export default App;
