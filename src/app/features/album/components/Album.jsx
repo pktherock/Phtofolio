@@ -4,7 +4,7 @@ import { albumService, alertService } from "../../../services";
 import { onSnapshot } from "firebase/firestore";
 import { HashLoader } from "react-spinners";
 import PhotoForm from "./PhotoForm";
-import { Card } from "../../../components";
+import { Card, FullScreenCarousel } from "../../../components";
 import { Container } from "../../../components";
 
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
@@ -19,6 +19,8 @@ function Album() {
   const [loading, setLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [showImgForm, setShowImgForm] = useState(false);
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
   const handleEdit = (photo) => {
     if (photo) {
@@ -125,13 +127,28 @@ function Album() {
           </h1>
         )}
 
+        {showCarousel && (
+          <FullScreenCarousel
+            images={photos.map((photo) => ({
+              original: photo.imgUrl,
+              thumbnail: photo.imgUrl,
+            }))}
+            handleClose={() => setShowCarousel(false)}
+            startIndex={carouselIndex}
+          />
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {photos.map((photo) => (
+          {photos.map((photo, index) => (
             <Card
               key={photo.id}
               albumId={photo.id}
               imageTitle={photo.title}
               imgUrl={photo.imgUrl}
+              showCarousel={() => {
+                setShowCarousel(true);
+                setCarouselIndex(index);
+              }}
               handleEdit={(e) => {
                 e.stopPropagation();
                 handleEdit(photo);

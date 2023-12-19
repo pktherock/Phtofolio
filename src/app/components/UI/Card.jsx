@@ -2,7 +2,14 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { CameraIcon, TrashIcon, PencilIcon } from "@heroicons/react/24/solid";
 
-function Card({ imgUrl, imageTitle, handleEdit, handleDelete, albumId }) {
+function Card({
+  imgUrl,
+  imageTitle,
+  handleEdit,
+  handleDelete,
+  albumId,
+  showCarousel,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +17,10 @@ function Card({ imgUrl, imageTitle, handleEdit, handleDelete, albumId }) {
       className="relative group max-w-xs rounded-lg overflow-hidden shadow-xl bg-yellow-600 hover:bg-yellow-300 cursor-pointer"
       onClick={(e) => {
         e.stopPropagation();
-        !imgUrl && navigate(albumId, { state: { albumName: imageTitle } });
+        if (!imgUrl) {
+          return navigate(albumId, { state: { albumName: imageTitle } });
+        }
+        showCarousel();
       }}
     >
       {imgUrl ? (
@@ -41,6 +51,7 @@ Card.propTypes = {
   handleEdit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   albumId: PropTypes.string.isRequired,
+  showCarousel: PropTypes.func,
 };
 
 export default Card;
