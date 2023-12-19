@@ -48,8 +48,15 @@ function Albums() {
           <Card
             key={album.id}
             imageTitle={album.albumName}
-            handleEdit={() => handleEdit(album)}
-            handleDelete={() => handleDelete(album.id)}
+            albumId={album.id}
+            handleEdit={(e) => {
+              e.stopPropagation();
+              handleEdit(album);
+            }}
+            handleDelete={(e) => {
+              e.stopPropagation();
+              handleDelete(album.id);
+            }}
           />
         ))}
       </div>

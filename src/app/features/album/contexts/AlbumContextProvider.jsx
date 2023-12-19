@@ -4,7 +4,7 @@ import { onSnapshot } from "firebase/firestore";
 
 import { AlbumProvider } from "./AlbumContext";
 import { albumService, alertService } from "../../../services";
-import { ClipLoader, ClockLoader, RingLoader } from "react-spinners";
+import { RingLoader } from "react-spinners";
 
 function AlbumContextProvider({ children }) {
   const [albums, setAlbums] = useState([]);

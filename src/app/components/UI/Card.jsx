@@ -1,13 +1,22 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { CameraIcon, TrashIcon, PencilIcon } from "@heroicons/react/24/solid";
 
-function Card({ imgUrl, imageTitle, handleEdit, handleDelete }) {
+function Card({ imgUrl, imageTitle, handleEdit, handleDelete, albumId }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="relative group max-w-xs rounded-lg overflow-hidden shadow-xl bg-yellow-600 hover:bg-yellow-300">
+    <div
+      className="relative group max-w-xs rounded-lg overflow-hidden shadow-xl bg-yellow-600 hover:bg-yellow-300 cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation();
+        !imgUrl && navigate(albumId, { state: { albumName: imageTitle } });
+      }}
+    >
       {imgUrl ? (
-        <img className="w-full p-2" src={imgUrl} alt="Gallery Image" />
+        <img className="w-full p-2 h-64" src={imgUrl} alt="Gallery Image" />
       ) : (
-        <CameraIcon className="w-full p-2" />
+        <CameraIcon className="w-full p-2 h-64" />
       )}
       <div className="absolute flex right-0 top-0 mt-1 mr-1 opacity-0 group-hover:opacity-100 transition-opacity gap-1">
         <PencilIcon
@@ -31,6 +40,7 @@ Card.propTypes = {
   imageTitle: PropTypes.string,
   handleEdit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  albumId: PropTypes.string.isRequired,
 };
 
 export default Card;

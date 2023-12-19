@@ -31,7 +31,7 @@ function AlbumForm({ album, setAlbum }) {
   }, [album]);
 
   return (
-    <form className="flex justify-center" onSubmit={handleSubmit}>
+    <form className="flex justify-center bg-gray-200 shadow-lg p-5 rounded-md" onSubmit={handleSubmit}>
       <div className="relative flex w-2/3 items-center">
         <input
           className="flex h-12 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-lg placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"

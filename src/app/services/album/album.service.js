@@ -1,4 +1,10 @@
-import { collection, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 import { db } from "../../config";
 
@@ -28,6 +34,33 @@ class AlbumService {
 
   deleteAlbum = async (id) => {
     return await deleteDoc(doc(db, "albums", id));
+  };
+
+  addPhoto = async ({ title, imgUrl, albumId }) => {
+    const photo = {
+      title,
+      imgUrl,
+      createdAt: new Date().toISOString(),
+    };
+    console.log(photo);
+    // add doc to the firestore and return photo with docId
+    const docRef = await addDoc(
+      collection(db, "albums", albumId, "photos"),
+      photo
+    );
+    photo.id = docRef.id;
+    return photo;
+  };
+
+  updatePhoto = async (albumId, id, title, imgUrl) => {
+    return await updateDoc(doc(db, "albums", albumId, "photos", id), {
+      title,
+      imgUrl,
+    });
+  };
+
+  deletePhoto = async (albumId, id) => {
+    return await deleteDoc(doc(db, "albums", albumId, "photos", id));
   };
 }
 
