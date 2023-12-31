@@ -1,4 +1,4 @@
-# React PhotoFolio Using Tailwind Css, Firebase and Context Api 
+# React PhotoFolio Using Tailwind CSS, Firebase, and Context Api 
 
 ## Coding Ninja Week 7 Project Submission
 
